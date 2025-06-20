@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ATM Application</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="account.css">
+    </head>
+<body>
+<h2>Create Account</h2>
+<form id="createForm">
+    Name: <input type="text" id="fullName"><br>
+    Card Number: <input type="text" id="cardNumber"><br>
+    Initial Balance: <input type="number" id="balance"><br>
+    <button type="submit">Create Account</button>
+</form>
+
+<h2>View Balance</h2>
+<input type="number" id="balanceAccountId" placeholder="Account ID">
+<button onclick="getBalance()">Show Balance</button>
+<p id="balanceResult"></p>
+
+<script src="account.js"></script>
+<h2>Deposit Money</h2>
+<form id="depositForm">
+    Account ID: <input type="number" id="depositId"><br>
+    Amount: <input type="number" id="depositAmount"><br>
+    <button type="submit">Deposit</button>
+</form>
+
+<h2>Withdraw Money</h2>
+<form id="withdrawForm">
+    Account ID: <input type="number" id="withdrawId"><br>
+    Amount: <input type="number" id="withdrawAmount"><br>
+    <button type="submit">Withdraw</button>
+</form>
+</form>
+
+</body>
+</html>
