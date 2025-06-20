@@ -27,17 +27,17 @@ public class AccountService implements IAccountService {
     @Override
     public AccountDto getAccountById(Long id) {
         Account account = accountRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Hesap bulunamadı"));
+                .orElseThrow(() -> new RuntimeException("Account not found"));
         return accountMapper.toDto(account);
     }
 
     @Override
     public AccountDto withdraw(Long id, Double amount) {
         Account account = accountRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Hesap bulunamadı"));
+                .orElseThrow(() -> new RuntimeException("Account not found"));
 
         if (account.getBalance() < amount) {
-            throw new RuntimeException("Yetersiz bakiye");
+            throw new RuntimeException("Insufficient balance");
         }
 
         account.setBalance(account.getBalance() - amount);
@@ -48,7 +48,7 @@ public class AccountService implements IAccountService {
     @Override
     public AccountDto deposit(Long id, Double amount) {
         Account account = accountRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Hesap bulunamadı"));
+                .orElseThrow(() -> new RuntimeException("Account not found"));
 
         account.setBalance(account.getBalance() + amount);
         Account updated = accountRepository.save(account);
@@ -58,7 +58,7 @@ public class AccountService implements IAccountService {
     @Override
     public Double getBalance(Long id) {
         Account account = accountRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Hesap bulunamadı"));
+                .orElseThrow(() -> new RuntimeException("Account not found"));
         return account.getBalance();
     }
 
