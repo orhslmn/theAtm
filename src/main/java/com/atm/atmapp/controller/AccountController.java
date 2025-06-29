@@ -19,8 +19,13 @@ public class AccountController {
         AccountDto created = accountService.createAccount(accountDto);
         return ResponseEntity.ok(created);
     }
+    @PostMapping("/login")
+    public ResponseEntity<?> login(@RequestBody LoginDto loginDto){
+        AccountDto accountDto=accountService.login(loginDto);
+        return ResponseEntity.ok(accountDto);
+    }
 
-    @GetMapping("/{id}")
+    @GetMapping("/get/{id}")
     public ResponseEntity<AccountDto> getAccount(@PathVariable Long id) {
         AccountDto account = accountService.getAccountById(id);
         return ResponseEntity.ok(account);
@@ -43,9 +48,5 @@ public class AccountController {
         Double balance = accountService.getBalance(id);
         return ResponseEntity.ok(balance);
     }
-    @PostMapping("/login")
-    public ResponseEntity<?> login(@RequestBody LoginDto loginDto){
-        AccountDto accountDto=accountService.login(loginDto);
-        return ResponseEntity.ok(accountDto);
-    }
+
 }

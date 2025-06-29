@@ -3,6 +3,7 @@ package com.atm.atmapp.dto;
 public class LoginDto {
     private String cardNumber;
     private String pin;
+
     public String getCardNumber() {
         return cardNumber;
     }

@@ -3,7 +3,7 @@ $('#loginForm').submit(function (e) {
     console.log("form sumbit");
     const loginData = {
         cardNumber: $('#loginCard').val(),
-        password :  $('#password').val()
+        pin :  $('#password').val()
     };
 
     $.ajax({
