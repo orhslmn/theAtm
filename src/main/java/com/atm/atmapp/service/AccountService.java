@@ -69,7 +69,7 @@ public class AccountService implements IAccountService {
         Account account = accountRepository.findByCardNumber(loginDto.getCardNumber())
                 .orElseThrow(() -> new CardNotFoundException("Card number not found"));
         if (!account.getPin().equals(loginDto.getPin())) {
-            throw new InvalidPinException("hatali");
+            throw new InvalidPinException("Invalid Pin");
         }
 
         return accountMapper.toDto(account);
