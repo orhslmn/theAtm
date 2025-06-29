@@ -5,6 +5,7 @@ public class AccountDto {
     private String cardNumber;
     private String fullName;
     private Double balance;
+    private String pin;
 
     public Long getId() {
         return id;
@@ -36,5 +37,13 @@ public class AccountDto {
 
     public void setBalance(Double balance) {
         this.balance = balance;
+    }
+
+    public String getPin() {
+        return pin;
+    }
+
+    public void setPin(String pin) {
+        this.pin = pin;
     }
 }

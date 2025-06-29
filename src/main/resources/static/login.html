@@ -4,13 +4,22 @@
     <meta charset="UTF-8">
     <title>ATM Login</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
+    <link rel="stylesheet" href="login.css">
 
 </head>
 <body>
+
 <h2>Login</h2>
+
 <form id="loginForm">
-    Card Number: <input type="text" id="loginCard" name="cardNumber"><br>
+    <div class="form-group">
+        <label for="loginCard">Card Number:</label>
+        <input type="text" id="loginCard" name="cardNumber">
+    </div>
+    <div class="form-group">
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password">
+    </div>
     <button type="submit">Login</button>
 </form>
 <script src="login.js"></script>

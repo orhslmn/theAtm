@@ -1,0 +1,30 @@
+body {
+            font-family: Arial, sans-serif;
+        }
+
+        .form-group {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+
+        .form-group label {
+            width: 100px;
+            font-weight: bold;
+        }
+
+        .form-group input {
+            padding: 5px;
+            width: 200px;
+        }
+
+        #loginForm {
+            border: 1px solid #ccc;
+            padding: 20px;
+            width: fit-content;
+        }
+
+        button {
+            margin-left: 100px;
+            padding: 5px 10px;
+        }

@@ -2,7 +2,8 @@ $('#loginForm').submit(function (e) {
     e.preventDefault();
     console.log("form sumbit");
     const loginData = {
-        cardNumber: $('#loginCard').val()
+        cardNumber: $('#loginCard').val(),
+        password :  $('#password').val()
     };
 
     $.ajax({
@@ -19,4 +20,5 @@ $('#loginForm').submit(function (e) {
             alert("Login failed!");
         }
     });
+
 });

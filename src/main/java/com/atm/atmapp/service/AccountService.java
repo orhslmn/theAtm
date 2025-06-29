@@ -3,6 +3,8 @@ package com.atm.atmapp.service;
 import com.atm.atmapp.dto.AccountDto;
 import com.atm.atmapp.dto.LoginDto;
 import com.atm.atmapp.entity.Account;
+import com.atm.atmapp.exeptions.CardNotFoundException;
+import com.atm.atmapp.exeptions.InvalidPinException;
 import com.atm.atmapp.iaccountService.IAccountService;
 import com.atm.atmapp.mapper.AccountMapper;
 import com.atm.atmapp.repository.AccountRepository;
@@ -65,7 +67,12 @@ public class AccountService implements IAccountService {
     @Override
     public AccountDto login(LoginDto loginDto) {
         Account account = accountRepository.findByCardNumber(loginDto.getCardNumber())
-                .orElseThrow(() -> new RuntimeException("Card number not found"));
+                .orElseThrow(() -> new CardNotFoundException("Card number not found"));
+        if (!account.getPin().equals(loginDto.getPin())) {
+            throw new InvalidPinException("hatali");
+        }
+
         return accountMapper.toDto(account);
     }
+
 }
