@@ -4,7 +4,7 @@ Java + Spring Boot ATM simulation project.
 Features:
 - User login with card number and PIN
 - Balance check
-- Deposit / Withdraw operations
+- Deposit / Withdraw operations / Transfer
 - Frontend with HTML + jQuery
 
 ## 📦 Technologies
