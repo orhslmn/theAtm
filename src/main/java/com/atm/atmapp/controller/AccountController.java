@@ -2,8 +2,10 @@ package com.atm.atmapp.controller;
 
 import com.atm.atmapp.dto.AccountDto;
 import com.atm.atmapp.dto.LoginDto;
+import com.atm.atmapp.entity.Account;
 import com.atm.atmapp.iaccountService.IAccountService;
 import lombok.RequiredArgsConstructor;
+import oracle.jdbc.proxy.annotation.Post;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,9 +21,10 @@ public class AccountController {
         AccountDto created = accountService.createAccount(accountDto);
         return ResponseEntity.ok(created);
     }
+
     @PostMapping("/login")
-    public ResponseEntity<?> login(@RequestBody LoginDto loginDto){
-        AccountDto accountDto=accountService.login(loginDto);
+    public ResponseEntity<?> login(@RequestBody LoginDto loginDto) {
+        AccountDto accountDto = accountService.login(loginDto);
         return ResponseEntity.ok(accountDto);
     }
 
@@ -47,6 +50,14 @@ public class AccountController {
     public ResponseEntity<Double> getBalance(@PathVariable Long id) {
         Double balance = accountService.getBalance(id);
         return ResponseEntity.ok(balance);
+    }
+
+    @PostMapping("/transfer/{senderId}/{receiverId}/{amount}")
+    public ResponseEntity<AccountDto> transferAmount(@PathVariable Long senderId,
+                                                     @PathVariable Long receiverId,
+                                                     @PathVariable Double amount) {
+        AccountDto sender = accountService.transferAmount(senderId, receiverId, amount);
+        return ResponseEntity.ok(sender);
     }
 
 }

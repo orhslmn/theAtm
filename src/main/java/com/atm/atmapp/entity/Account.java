@@ -14,7 +14,6 @@ public class Account {
     private String fullName;
     private Double balance;
     private String pin;
-
     public Long getId() {
         return id;
     }

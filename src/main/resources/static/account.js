@@ -52,8 +52,21 @@ const accountId = localStorage.getItem("accountId");
         });
     });
 
-
 });
+$('#transferForm').submit(function (e) {
+    e.preventDefault();
+
+    const senderId = $('#senderId').val();
+    const receiverId = $('#receiverId').val();
+    const transferAmount = $('#transferAmount').val();
+
+$.post(`/api/account/transfer/${senderId}/${receiverId}/${transferAmount}`, function (transferData) {
+    alert(transferAmount + " USD transferred. New balance: " + transferData.balance+" USD");
+}).fail(function () {
+    alert("Transfer failed! There might be insufficient balance.");
+});
+});
+
 function getBalance() {
     const accountId = $('#balanceAccountId').val();
 
@@ -67,4 +80,7 @@ function getBalance() {
             alert("Failed to retrieve balance.");
         }
     });
-}
+
+  }
+
+

@@ -75,4 +75,19 @@ public class AccountService implements IAccountService {
         return accountMapper.toDto(account);
     }
 
+    @Override
+    public AccountDto transferAmount(Long senderId, Long receiverId, Double amount) {
+        Account sender = accountRepository.findById(senderId).orElseThrow(() -> new RuntimeException("id not found"));
+        Account receiver = accountRepository.findById(receiverId).orElseThrow(() -> new RuntimeException("transfer id is not found"));
+
+        if (sender.getBalance() < amount) {
+            throw new RuntimeException("Insufficient balance.");
+        }
+        sender.setBalance(sender.getBalance() - amount);
+        receiver.setBalance(receiver.getBalance() + amount);
+        accountRepository.save(sender);
+        accountRepository.save(receiver);
+        return accountMapper.toDto(sender);
+    }
+
 }

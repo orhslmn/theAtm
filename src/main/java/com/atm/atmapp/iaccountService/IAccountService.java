@@ -10,5 +10,6 @@ public interface IAccountService {
     AccountDto deposit(Long id, Double amount);
     Double getBalance(Long id);
     AccountDto login(LoginDto loginDto);
+    AccountDto transferAmount(Long senderId, Long receiverId, Double amount);
 
 }

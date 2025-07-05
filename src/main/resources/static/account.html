@@ -5,34 +5,81 @@
     <title>ATM Application</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="account.css">
-    </head>
+</head>
 <body>
-<h2>Create Account</h2>
-<form id="createForm">
-    Name: <input type="text" id="fullName"><br>
-    Card Number: <input type="text" id="cardNumber"><br>
-    Initial Balance: <input type="number" id="balance"><br>
-    <button type="submit">Create Account</button>
-</form>
 
-<h2>View Balance</h2>
-<input type="number" id="balanceAccountId" placeholder="Account ID">
-<button onclick="getBalance()">Show Balance</button>
-<p id="balanceResult"></p>
+<h1>ATM Application</h1>
 
-<h2>Deposit Money</h2>
-<form id="depositForm">
-    Account ID: <input type="number" id="depositId"><br>
-    Amount: <input type="number" id="depositAmount"><br>
-    <button type="submit">Deposit</button>
-</form>
+<!-- Hesap İşlemleri -->
+<div class="section-row">
+    <div class="card">
+        <h2>Create Account</h2>
+        <form id="createForm">
+            <label>Name:</label>
+            <input type="text" id="fullName">
 
-<h2>Withdraw Money</h2>
-<form id="withdrawForm">
-    Account ID: <input type="number" id="withdrawId"><br>
-    Amount: <input type="number" id="withdrawAmount"><br>
-    <button type="submit">Withdraw</button>
-</form>
+            <label>Card Number:</label>
+            <input type="text" id="cardNumber">
+
+            <label>Initial Balance:</label>
+            <input type="number" id="balance">
+
+            <button type="submit">Create Account</button>
+        </form>
+    </div>
+
+    <div class="card">
+        <h2>View Balance</h2>
+        <input type="text" id="balanceAccountId" placeholder="Account ID">
+        <button onclick="getBalance()">Show Balance</button>
+        <p id="balanceResult"></p>
+    </div>
+</div>
+
+<!-- Para İşlemleri -->
+<div class="section-row">
+    <div class="card">
+        <h2>Deposit Money</h2>
+        <form id="depositForm">
+            <label>Account ID:</label>
+            <input type="number" id="depositId">
+
+            <label>Amount:</label>
+            <input type="number" id="depositAmount">
+
+            <button type="submit">Deposit</button>
+        </form>
+    </div>
+
+    <div class="card">
+        <h2>Withdraw Money</h2>
+        <form id="withdrawForm">
+            <label>Account ID:</label>
+            <input type="number" id="withdrawId">
+
+            <label>Amount:</label>
+            <input type="number" id="withdrawAmount">
+
+            <button type="submit">Withdraw</button>
+        </form>
+    </div>
+
+    <div class="card">
+        <h2>Transfer Money</h2>
+        <form id="transferForm">
+            <label>Sender Account ID:</label>
+            <input type="text" id="senderId">
+
+            <label>Receiver Account ID:</label>
+            <input type="text" id="receiverId">
+
+            <label>Amount:</label>
+            <input type="number" id="transferAmount">
+
+            <button type="submit">Transfer</button>
+        </form>
+    </div>
+</div>
 
 <script src="account.js"></script>
 </body>
