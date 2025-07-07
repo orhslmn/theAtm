@@ -46,10 +46,11 @@ public class AccountService implements IAccountService {
         }
 
         account.setBalance(account.getBalance() - amount);
-        Transaction dto=new Transaction();
+        TransactionDto dto=new TransactionDto();
         dto.setTargetAccountId(account.getId());
         dto.setAmount(amount);
         dto.setType("withdraw");
+        transactionService.saveTransaction(dto);
         Account updated = accountRepository.save(account);
         return accountMapper.toDto(updated);
     }
