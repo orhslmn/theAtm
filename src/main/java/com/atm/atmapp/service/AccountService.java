@@ -2,7 +2,9 @@ package com.atm.atmapp.service;
 
 import com.atm.atmapp.dto.AccountDto;
 import com.atm.atmapp.dto.LoginDto;
+import com.atm.atmapp.dto.TransactionDto;
 import com.atm.atmapp.entity.Account;
+import com.atm.atmapp.entity.Transaction;
 import com.atm.atmapp.exeptions.CardNotFoundException;
 import com.atm.atmapp.exeptions.InvalidPinException;
 import com.atm.atmapp.iaccountService.IAccountService;
@@ -17,6 +19,7 @@ public class AccountService implements IAccountService {
 
     private final AccountRepository accountRepository;
     private final AccountMapper accountMapper;
+    private final TransactionService transactionService;
 
     @Override
     public AccountDto createAccount(AccountDto dto) {
@@ -43,6 +46,10 @@ public class AccountService implements IAccountService {
         }
 
         account.setBalance(account.getBalance() - amount);
+        Transaction dto=new Transaction();
+        dto.setTargetAccountId(account.getId());
+        dto.setAmount(amount);
+        dto.setType("withdraw");
         Account updated = accountRepository.save(account);
         return accountMapper.toDto(updated);
     }
@@ -53,6 +60,11 @@ public class AccountService implements IAccountService {
                 .orElseThrow(() -> new RuntimeException("Account not found"));
 
         account.setBalance(account.getBalance() + amount);
+        TransactionDto dto=new TransactionDto();
+        dto.setAccountId(account.getId());
+        dto.setAmount(amount);
+        dto.setType("deposit");
+        transactionService.saveTransaction(dto);
         Account updated = accountRepository.save(account);
         return accountMapper.toDto(updated);
     }
