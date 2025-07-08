@@ -3,10 +3,7 @@ package com.atm.atmapp.controller;
 import com.atm.atmapp.dto.TransactionDto;
 import com.atm.atmapp.iaccountService.ITransectionService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -15,7 +12,7 @@ import java.util.List;
 public class TransactionController {
     @Autowired
     private ITransectionService iTransectionService;
-    @GetMapping("/{acountId}")
+    @PostMapping("/{acountId}")
     public List<TransactionDto> getAllTransactionByID(@PathVariable  Long accountId){
         return iTransectionService.getAllTransactionByID(accountId);
     }

@@ -46,8 +46,9 @@ public class AccountService implements IAccountService {
         }
 
         account.setBalance(account.getBalance() - amount);
+
         TransactionDto dto=new TransactionDto();
-        dto.setTargetAccountId(account.getId());
+        dto.setAccountId(account.getId());
         dto.setAmount(amount);
         dto.setType("withdraw");
         transactionService.saveTransaction(dto);
